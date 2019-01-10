@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <style>
+        #data ul {
+            list-style-type: none;
+        }
+
+        #data ul li {
+            overflow: auto;
+        }
+
+        #data ul li img {
+            float: left;
+            padding-right: 10px;
+            padding-bottom: 0px;
+            margin: 0 5px 0px 0;
+            width: 100px;
+            height: 100px;
+        }
+
+        #data ul li h3 {
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="mainPage">
+    <h1>oSARA</h1>
+    <div id="data">
+    <!-- start -->
+
+ <p>oSARA analyzes the AndroidManifest.xml file associated with Android code repositories to capture the history
+            of all permission changes. The motivation for building this tool was to understand the types of users that
+            make permission changes to apps, how frequently the permissions are added and reverted and when in the app's
+            commit history the changes are made.</p>
+
+            <p>The source code for the tool is available <a href="https://github.com/MobileEvolution/oSARA" target="_blank">here</a>.</p>
+
+    
+        <h3>Setup and Running</h3>
+        <p>
+        The tool was developed as a Windows Form Application using Visual Studio 2017. It utilizes F-Droid's collection
+        of open source Android code repositories to perform the analysis on. Presently, the tool targets repositories
+        hosted on GitHub.
+
+        To run the tool, either:
+
+        <ol>
+        <li>clone/download the GitHub repository. Open the solution in Visual Studio and build the project</li>
+        <li>extract the files from the executable.zip archive and run 'AndroidCodeAnalyzer.exe'</li>
+        </ol>
+            It is recommend that the following sequence be followed when running the tool:
+        <ol>
+            <li><a href="#sc_02">F-Droid Repository</a> </li>
+            <li><a href="#sc_03">Download Android Projects</a> </li>
+            <li><a href="#sc_04">Get Project Commit History</a> </li>
+            <li><a href="#sc_05">Get Manifest History</a> </li>
+            <li><a href="#sc_06">Process Author Rating</a> </li>
+            <li><a href="#sc_07">Process Permissions</a> </li>
+        </ol>
+
+        <h3>Screens</h3>
+        <h5 id="sc_01"><u>Main/Home Screen</u></h5>
+        The following is the main/home screen of the tool. From this screen, the user can perform the required download/processing tasks.
+        <br>
+        <img src="images/sc_01.png" height="445" width="379"/>
+        <br>
+
+        <h5 id="sc_02"><u>Download F-Droid Repository</u></h5>
+        The following screen is utilized to download the F-Droid repository. The download location needs to be procreated and provided prior to starting the process. The database will also be created in this location.
+        <br>
+        <img src="images/sc_02.PNG" height="400" width="800"/>
+        <br>
+
+
+
+
+        <h5 id="sc_03"><u>Download Android Projects</u></h5>
+        The following screen is utilized to download the Android project repositories. The download location needs to be procreated and provided prior to starting the process. Database location should point to the 'database.sqlite' file created in the previous step.
+        <br>
+        <img src="images/sc_03.PNG" height="400" width="800"/>
+        <br>
+
+        <h5 id="sc_04"><u>Get Project Commit History</u></h5>
+        The following screen is utilized to download the commit history for the Android projects. The database location should point to the 'database.sqlite' file and the download location should point to same location entered in the previous step.
+        <br>
+        <img src="images/sc_04.png" height="500" width="500"/>
+        <br>
+
+        <h5 id="sc_05"><u>Get Manifest History</u></h5>
+        The following screen is utilized to download manifest file history of the Android project. The database location should point to the 'database.sqlite' file and the download location should point to same location entered in the previous step.
+        <br>
+        <img src="images/sc_05.png" height="400" width="500"/>
+        <br>
+
+        <h5 id="sc_06"><u>Process Author Rating</u></h5>
+        The following screen is utilized to calculate the author rating (i.e. Developer Commit Ratio). The tool outputs the data into a CSV file. The database location should point to the 'database.sqlite' file. The CVS output location should be created prior to running the tool (delete the csv file if already exists in the location).
+        <br>
+        <img src="images/sc_06.png" height="400" width="800"/>
+        <br>
+
+        <h5 id="sc_07"><u>Process Permissions</u></h5>
+        The following screen is utilized to provide a Add/Remove history of the permissions associated with an app. The tool outputs the data into a CSV file. The database location should point to the 'database.sqlite' file. The CVS output location should be created prior to running the tool (delete the csv file if already exists in the location).
+        <br>
+        <img src="images/sc_07.png" height="400" width="800"/>
+        <br>
+
+        </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- stop -->
+    </div>
+</div>
+
+</body>
+</html>
