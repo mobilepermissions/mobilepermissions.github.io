@@ -73,7 +73,7 @@ function loadPageData(strPageName) {
         $('#content').load("pages/osara.html");
       });
       $(window).on('load', function(){
-        $('#activitiesNavLink').addClass('dkActive');
+        $('#osara-nav').addClass('dkActive');
       })
       break;
 
@@ -83,7 +83,7 @@ function loadPageData(strPageName) {
         $('#content').load("pages/oracleApps.html");
       });
       $(window).on('load', function(){
-     //   $('#activitiesNavLink').addClass('dkActive');
+        $('#oracle-nav').addClass('dkActive');
       })
       break;
 
@@ -94,7 +94,7 @@ function loadPageData(strPageName) {
         $('#content').load("pages/data.html");
       });
       $(window).on('load', function() {
-        $('#fundingNavLink').addClass('dkActive');
+        $('#data-nav').addClass('dkActive');
       })
       break;
   
@@ -103,7 +103,7 @@ function loadPageData(strPageName) {
         $('#content').load("pages/papers.html");
       });
       $(window).on('load', function() {
-        $('#fundingNavLink').addClass('dkActive');
+        $('#papers-nav').addClass('dkActive');
       })
       break;
 
@@ -155,10 +155,10 @@ function loadPageData(strPageName) {
        <li><a href="index.html?page=documentation" id="documentationNavLink" class="animate">Documentation</a></li>
        -->
 
-        <li><a href="index.html?page=oracle" id="fundingNavLink" class="animate">Oracle Information</a></li>
-        <li><a href="index.html?page=osara" id="fundingNavLink" class="animate">oSARA Tool</a></li>
-        <li><a href="index.html?page=data" id="fundingNavLink" class="animate">Project Data</a></li>
-        <li><a href="index.html?page=papers" id="fundingNavLink" class="animate">Papers</a></li>
+        <li><a href="index.html?page=oracle" id="oracle-nav" class="animate">Oracle Information</a></li>
+        <li><a href="index.html?page=osara" id="osara-nav" class="animate">oSARA Tool</a></li>
+        <li><a href="index.html?page=data" id="data-nav" class="animate">Project Data</a></li>
+        <li><a href="index.html?page=papers" id="papers-nav" class="animate">Papers</a></li>
 
       </ul>
     </div>
