@@ -75,7 +75,7 @@ function loadPageData(strPageName) {
       $(window).on('load', function(){
         $('#activitiesNavLink').addClass('dkActive');
       })
-  break;
+      break;
 
 
     case "oracle":
@@ -85,7 +85,7 @@ function loadPageData(strPageName) {
       $(window).on('load', function(){
      //   $('#activitiesNavLink').addClass('dkActive');
       })
-  break;
+      break;
 
 
 
@@ -96,7 +96,16 @@ function loadPageData(strPageName) {
       $(window).on('load', function() {
         $('#fundingNavLink').addClass('dkActive');
       })
-  break;
+      break;
+  
+    case "papers":
+      $(document).ready(function() {
+        $('#content').load("pages/papers.html");
+      });
+      $(window).on('load', function() {
+        $('#fundingNavLink').addClass('dkActive');
+      })
+      break;
 
 
     default:
@@ -149,6 +158,7 @@ function loadPageData(strPageName) {
         <li><a href="index.html?page=oracle" id="fundingNavLink" class="animate">Oracle Information</a></li>
         <li><a href="index.html?page=osara" id="fundingNavLink" class="animate">oSARA Tool</a></li>
         <li><a href="index.html?page=data" id="fundingNavLink" class="animate">Project Data</a></li>
+        <li><a href="index.html?page=papers" id="fundingNavLink" class="animate">Papers</a></li>
 
       </ul>
     </div>
