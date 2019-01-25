@@ -68,24 +68,14 @@ var sPageURL = window.location.search.substring(1);
 function loadPageData(strPageName) {
   switch(strPageName) {
 
-    case "aboutproject":
-      $(document).ready(function() {
-        $('#content').load("pages/aboutproject.html");
-      });
-      $(window).on('load', function() {
-        $('#aboutProjectNavLink').addClass('dkActive');
-      })
-  break;
-
-
     case "osara":
       $(document).ready(function(){
         $('#content').load("pages/osara.html");
       });
       $(window).on('load', function(){
-        $('#activitiesNavLink').addClass('dkActive');
+        $('#osara-nav').addClass('dkActive');
       })
-  break;
+      break;
 
 
     case "oracle":
@@ -93,9 +83,9 @@ function loadPageData(strPageName) {
         $('#content').load("pages/oracleApps.html");
       });
       $(window).on('load', function(){
-     //   $('#activitiesNavLink').addClass('dkActive');
+        $('#oracle-nav').addClass('dkActive');
       })
-  break;
+      break;
 
 
 
@@ -104,9 +94,18 @@ function loadPageData(strPageName) {
         $('#content').load("pages/data.html");
       });
       $(window).on('load', function() {
-        $('#fundingNavLink').addClass('dkActive');
+        $('#data-nav').addClass('dkActive');
       })
-  break;
+      break;
+  
+    case "papers":
+      $(document).ready(function() {
+        $('#content').load("pages/papers.html");
+      });
+      $(window).on('load', function() {
+        $('#papers-nav').addClass('dkActive');
+      })
+      break;
 
 
     default:
@@ -150,21 +149,16 @@ function loadPageData(strPageName) {
     <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav navbar-right">
 
-<!--
+      <!--
        <li><a href="index.html?page=data" id="fundingNavLink" class="animate">Data</a></li>
         
        <li><a href="index.html?page=documentation" id="documentationNavLink" class="animate">Documentation</a></li>
        -->
 
-        <li><a href="index.html?page=oracle" id="fundingNavLink" class="animate">Oracle Information</a></li>
-        <li><a href="index.html?page=osara" id="fundingNavLink" class="animate">oSARA Tool</a></li>
-        <li><a href="index.html?page=data" id="fundingNavLink" class="animate">Project Data</a></li>
-
-
-
-       <li><a href="index.html?page=aboutproject" id="aboutProjectNavLink" class="animate">About Project</a></li>
-
-
+        <li><a href="index.html?page=osara" id="osara-nav" class="animate">oSARA Tool</a></li>
+        <li><a href="index.html?page=data" id="data-nav" class="animate">Project Data</a></li>
+        <li><a href="index.html?page=oracle" id="oracle-nav" class="animate">Oracle Information</a></li>
+        <li><a href="index.html?page=papers" id="papers-nav" class="animate">Papers</a></li>
 
       </ul>
     </div>
