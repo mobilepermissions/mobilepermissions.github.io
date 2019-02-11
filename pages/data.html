@@ -24,6 +24,14 @@
             font-size: 14px;
             margin-top: 20px;
         }
+        
+        #data th {
+            padding: 4px;
+        }
+        
+        #data td {
+            padding: 4px;
+        }
     </style>
 </head>
 <body>
@@ -56,63 +64,585 @@
         <p>
         <p>A description of each table in the dataset is provided below:</p>
         <table border="1">
-            <thead>
+          <thead>
+          <tr>
             <th>Table Name</th>
             <th>Description</th>
             <th>Total Rows</th>
+          </tr>
+          </thead>
+          <tbody>
+           <tr>
+              <td>git_commit_log</td>
+              <td>Commit details for the cloned apps</td>
+              <td>789,577</td>
+            </tr>
+           <tr>
+              <td>git_commit_files</td>
+              <td>Files associated with each commit</td>
+              <td>18,258,282</td>
+            </tr>
+           <tr>
+              <td>git_commit_file_OnlyJavaAndManifestFiles</td>
+              <td>Only '.java' and 'AndroidManifest.xml' files associated with each commit. This is a subset of the records in git_commit_files. This table is provided to help speedup queries involving these two types of files.</td>
+              <td>3,929,228</td>
+            </tr>
+           <tr>
+              <td>permission_types</td>
+              <td>Contains the name and type of Android permissions and if the permission is dangerous</td>
+              <td>58</td>
+            </tr>
+           <tr>
+              <td>mperm_analyzed</td>
+              <td>Holds the results of running the M-Perm tool</td>
+              <td>3,667,361</td>
+            </tr>
+           <tr>
+              <td>mperm_analyzed_error_log</td>
+              <td>Log of errors encountered when running M-Perm <br>Note: This table was not utilized in the analysis</td>
+              <td>337,484</td>
+            </tr>
+           <tr>
+              <td>mperm_analyzed_source_code_permissions</td>
+              <td>Documents the source code line where a permission was used <br>Note: This table was not utilized in the analysis</td>
+              <td>1,598,159</td>
+            </tr>
+           <tr>
+              <td>plint_analyzed</td>
+              <td>Holds the results of running the P-Lint tool</td>
+              <td>804,558</td>
+            </tr>
+           <tr>
+              <td>plint_analyzed_dcr</td>
+              <td>DCR scores for the P-Lint analysis</td>
+              <td>802,016</td>
+            </tr>
+           <tr>
+              <td>Cloned_App</td>
+              <td>The list of apps that were cloned</td>
+              <td>2,002</td>
+            </tr>
+           <tr>
+              <td>Cloned_app_with_Java_Manifest</td>
+              <td>The list of apps that contain java and manifest files. This data is a subset of Cloned_App</td>
+              <td>1,989</td>
+            </tr>
+           <tr>
+              <td>Cloned_app_without_Java_Manifest</td>
+              <td>The list of apps that do not contain java and manifest files. This data is a subset of Cloned_App</td>
+              <td>13</td>
+            </tr>
+          </tbody>
+         </table>
+         
+         <h4 style="margin-top:16px;">Listed below is a brief descriptions of the columns in each table</h4>
+
+         <p>Table: git_commit_log</p>
+
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>git_commit_log</td>
-                <td>Commit details for the cloned apps</td>
-                <td>789,577</td>
-            </tr>
-            <tr>
-                <td>git_commit_files</td>
-                <td>Files associated with each commit</td>
-                <td>18,258,282</td>
-            </tr>
-            <tr>
-                <td>git_commit_file_OnlyJavaAndManifestFiles</td>
-                <td>Only '.java' and 'AndroidManifest.xml' files associated with each commit</td>
-                <td>3,929,228</td>
-            </tr>
-            <tr>
-                <td>permission_types</td>
-                <td>Contains the name and type of Android permissions and if the permission is dangerous</td>
-                <td>58</td>
-            </tr>
-            <tr>
-                <td>mperm_analyzed</td>
-                <td>Holds the results of running the M-Perm tool</td>
-                <td>3,667,361</td>
-            </tr>
-            <tr>
-                <td>mperm_analyzed_error_log</td>
-                <td>Log of errors encountered when running M-Perm<br><i>Note: This table was not utilized in the analysis</i></td>
-                <td>337,484</td>
-            </tr>
-            <tr>
-                <td>mperm_analyzed_source_code_permissions</td>
-                <td>Documents the source code line where a permission was used<br><i>Note: This table was not utilized in the analysis</i></td>
-                <td>1,598,159</td>
-            </tr>
-            <tr>
-                <td>plint_analyzed</td>
-                <td>Holds the results of running the P-Lint tool</td>
-                <td>804,558</td>
-            </tr>
-            <tr>
-                <td>plint_analyzed_dcr</td>
-                <td>DCR scores for the P-Lint analysis</td>
-                <td>802,016</td>
-            </tr>
+              <tr>
+                <td>App</td>
+                <td>Text</td>
+                <td>The name of the app (unique)</td>
+              </tr>
+              <tr>
+                <td>Commit_SHA</td>
+                <td>Text</td>
+                <td>The SHA (id) of the commit</td>
+              </tr>
+              <tr>
+                <td>Message</td>
+                <td>Text</td>
+                <td>The commit message</td>
+              </tr>
+              <tr>
+                <td>Message_Short</td>
+                <td>Text</td>
+                <td>A shortened version of the commit message</td>
+              </tr>
+              <tr>
+                <td>Author_Name</td>
+                <td>Text</td>
+                <td>The name of the commit author</td>
+              </tr>
+              <tr>
+                <td>Author_Email</td>
+                <td>Text</td>
+                <td>The email of the commit author</td>
+              </tr>
+              <tr>
+                <td>Author_Date_Ticks</td>
+                <td>Float</td>
+                <td>The date (in ticks) when the author staged the commit</td>
+              </tr>
+              <tr>
+                <td>Author_Date_Text</td>
+                <td>Text</td>
+                <td>The date (in text) when the author staged the commit</td>
+              </tr>
+              <tr>
+                <td>Committer_Name</td>
+                <td>Text</td>
+                <td>The name of the person who committed the update</td>
+              </tr>
+              <tr>
+                <td>Committer_Email</td>
+                <td>Text</td>
+                <td>The email of the person who committed the update</td>
+              </tr>
+              <tr>
+                <td>Committer_Date_Ticks</td>
+                <td>Float</td>
+                <td>The date (in ticks) when the committer pushed the commit</td>
+              </tr>
+              <tr>
+                <td>Committer_Date_Text</td>
+                <td>Text</td>
+                <td>The date (in text) when the committer pushed the commit</td>
+              </tr>
             </tbody>
+          </table>
+          
+          <p style="margin-top:16px;">Table: git_commit_files</p>
+          
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App</td>
+                <td>Text</td>
+                <td>The name of the app (unique)</td>
+              </tr>
+              <tr>
+                <td>Commit_SHA</td>
+                <td>Text</td>
+                <td>The SHA (id) of the commit</td>
+              </tr>
+              <tr>
+                <td>Path</td>
+                <td>Text</td>
+                <td>The relative path of the file in the repository</td>
+              </tr>
+              <tr>
+                <td>Old_Path</td>
+                <td>Text</td>
+                <td>The relative path of the file in the repository prior to the file being renamed</td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                <td>Text</td>
+                <td>The type of action performed on the file (i.e., added, modified, deleted or renamed the file)</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p style="margin-top:16px;">Table: git_commit_file_OnlyJavaAndManifestFiles</p>
 
-        </table>
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App</td>
+                <td>Text</td>
+                <td>The name of the app (unique)</td>
+              </tr>
+              <tr>
+                <td>Commit_SHA</td>
+                <td>Text</td>
+                <td>The SHA (id) of the commit</td>
+              </tr>
+              <tr>
+                <td>Path</td>
+                <td>Text</td>
+                <td>The relative path of the file in the repository</td>
+              </tr>
+              <tr>
+                <td>Old_Path</td>
+                <td>Text</td>
+                <td>The relative path of the file in the repository prior to the file being renamed</td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                <td>Text</td>
+                <td>The type of action performed on the file (i.e., added, modified, deleted or renamed the file)</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p style="margin-top:16px;">Table: permission_types</p>
 
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Permission_Id</td>
+                <td>Integer</td>
+                <td>The id of the permission (unique)</td>
+              </tr>
+              <tr>
+                <td>Permission_Name</td>
+                <td>Text</td>
+                <td>The name of the permission</td>
+              </tr>
+              <tr>
+                <td>Permission_Type</td>
+                <td>Text</td>
+                <td>The category the permission belongs to</td>
+              </tr>
+              <tr>
+                <td>Is_Dangerous</td>
+                <td>Integer</td>
+                <td>If the permission is known to be a dangerous permission, the value of this column is 1, otherwise 0</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p style="margin-top:16px;">Table: mperm_analyzed</p>
+          
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Index</td>
+                <td>Integer</td>
+                <td>The primary key column of the table</td>
+              </tr>
+              <tr>
+                <td>App_Name</td>
+                <td>Text</td>
+                <td>The name of the app</td>
+              </tr>
+              <tr>
+                <td>Commit_Id</td>
+                <td>Text</td>
+                <td>The commit SHA (id) containing the permission</td>
+              </tr>
+              <tr>
+                <td>Permission_Name</td>
+                <td>Text</td>
+                <td>The name of the permission</td>
+              </tr>
+              <tr>
+                <td>Is_Requested</td>
+                <td>Integer</td>
+                <td>1 if the app requests the permission from the user</td>
+              </tr>
+              <tr>
+                <td>Is_Third_Party</td>
+                <td>Integer</td>
+                <td>1 if permission is 3rd party</td>
+              </tr>
+              <tr>
+                <td>Is_Dangerous</td>
+                <td>Integer</td>
+                <td>1 if the permission is dangerous</td>
+              </tr>
+              <tr>
+                <td>Is_Over_Requested</td>
+                <td>Integer</td>
+                <td>1 if the permission is an over request</td>
+              </tr>
+              <tr>
+                <td>Timeunix</td>
+                <td>Float</td>
+                <td>The time of the commit</td>
+              </tr>
+              <tr>
+                <td>RQ1</td>
+                <td>Text</td>
+                <td>This column corresponds to the ‘Is_Requested’ value of mperm. Possible values:
+                  <ul>
+                    <li>New: permission is introduced in this commit</li>
+                    <li>Exist:permission existed in previous commit</li>
+                    <li>Fix: permission no appears in subsequent commit</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>RQ2</td>
+                <td>Text</td>
+                <td>This column corresponds to the ‘is_third_party’ value of mperm and have the possible values of new, exist, fix.</td>
+              </tr>
+              <tr>
+                <td>RQ3</td>
+                <td>Text</td>
+                <td>This column corresponds to the ‘is_dangerous’ value of mperm and have the possible values of new, exist, fix.</td>
+              </tr>
+              <tr>
+                <td>RQ4</td>
+                <td>Text</td>
+                <td>This column corresponds to the ‘is_over_requested’ value of mperm and have the possible values of new, exist, fix.</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p style="margin-top:16px;">Table: plint_analyzed</p>
+          
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App_Name</td>
+                <td>Text</td>
+                <td>The name of the app</td>
+              </tr>
+              <tr>
+                <td>Commit_Id</td>
+                <td>Text</td>
+                <td>The commit SHA (id) containing the permission</td>
+              </tr>
+              <tr>
+                <td>File_Name</td>
+                <td>Text</td>
+                <td>The path of the file containing the issue</td>
+              </tr>
+              <tr>
+                <td>Method_Name</td>
+                <td>Text</td>
+                <td>The name of the method associated with the issue</td>
+              </tr>
+              <tr>
+                <td>Author_Email</td>
+                <td>Text</td>
+                <td>The author of the commit</td>
+              </tr>
+              <tr>
+                <td>Timeunix</td>
+                <td>Text</td>
+                <td>The timestamp of the commit</td>
+              </tr>
+              <tr>
+                <td>UseCase 1 … UseCase 16</td>
+                <td>Text</td>
+                <td>These columns correspond to the use cases checked by plint. An ‘X’ indicates the presence of an issue, while ‘O’ indicates the absence of an issue.</td>
+              </tr>
+              <tr>
+                <td>UC 1 … UC 16</td>
+                <td>Text</td>
+                <td>These columns provide more details on the status of the permission issue. If the issue was newly added, removed or is an existing issue.</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p style="margin-top:16px;">Table: plint_analyzed_dcr</p>
+          
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Index</td>
+                <td>Integer</td>
+                <td>The primary key column of the table</td>
+              </tr>
+              <tr>
+                <td>App_Name</td>
+                <td>Text</td>
+                <td>The name of the app</td>
+              </tr>
+              <tr>
+                <td>Commit_Id</td>
+                <td>Text</td>
+                <td>The commit SHA (id) containing the permission</td>
+              </tr>
+              <tr>
+                <td>Author_Email</td>
+                <td>Text</td>
+                <td>The name of the author of the update</td>
+              </tr>
+              <tr>
+                <td>DCR</td>
+                <td>Text</td>
+                <td>The DCR score of the author performing the commit</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p style="margin-top:16px;">Table: mperm_analyzed_source_code_permissions</p>
+          
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App_Name</td>
+                <td>Text</td>
+                <td>The name of the app</td>
+              </tr>
+              <tr>
+                <td>Commit_Id</td>
+                <td>Text</td>
+                <td>The commit SHA (id) containing the permission</td>
+              </tr>
+              <tr>
+                <td>Permission_Name</td>
+                <td>Text</td>
+                <td>The name of the permission detected by mperm</td>
+              </tr>
+              <tr>
+                <td>File_Path</td>
+                <td>Text</td>
+                <td>The absolute path of the file</td>
+              </tr>
+              <tr>
+                <td>Source_Code</td>
+                <td>Text</td>
+                <td>The source code statement containing the permission</td>
+              </tr>
+              <tr>
+                <td>Line</td>
+                <td>Integer</td>
+                <td>The line number of the file containing the permission</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p style="margin-top:16px;">Table: mperm_analyzed_error_log</p>
+          
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Index</td>
+                <td>Text</td>
+                <td>The primary key column of the table</td>
+              </tr>
+              <tr>
+                <td>App_Name</td>
+                <td>Text</td>
+                <td>The name of the app</td>
+              </tr>
+              <tr>
+                <td>APK_ID</td>
+                <td>Text</td>
+                <td>The unique id of the apk file</td>
+              </tr>
+              <tr>
+                <td>File_Path</td>
+                <td>Text</td>
+                <td>The absolute path of the Android Manifest file</td>
+              </tr>
+              <tr>
+                <td>Error_Message</td>
+                <td>Text</td>
+                <td>The error encountered by the tool when analyzing the file</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p style="margin-top:16px;">Table: Cloned_app</p>
+          
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App</td>
+                <td>Text</td>
+                <td>The name of the app</td>
+              </tr>
+            </tbody>
+          </table>
         </p>
-
+          
+          <p style="margin-top:16px;">Table: Cloned_app_with_Java_Manifest</p>
+          
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App</td>
+                <td>Text</td>
+                <td>The name of the app</td>
+              </tr>
+            </tbody>
+          </table>
+        </p>
+          
+          <p style="margin-top:16px;">Table: Cloned_app_without_Java_Manifest</p>
+          
+          <table border=1>
+            <thead>
+              <tr>
+                <th>Column Name</th>
+                <th>Type</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>App</td>
+                <td>Text</td>
+                <td>The name of the app</td>
+              </tr>
+            </tbody>
+          </table>
+        </p>
 
     </div>
 </div>
